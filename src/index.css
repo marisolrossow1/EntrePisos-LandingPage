@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+/* Eliminar márgenes y paddings de los slides */
+.splide__slide {
+    margin: 0 !important; /* Eliminar márgenes */
+    padding: 0 !important; /* Eliminar padding */
+  }
+  
+  /* Eliminar márgenes de los contenedores internos */
+  .splide__track {
+    margin: 0 !important;
+  }
+  
+  /* Asegurarse de que el contenedor principal no tenga margen */
+  .splide__list {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
