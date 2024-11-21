@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Grid2, Typography, Paper } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
-import Slider from '../components/Slider'
+import Slider from './TestimonialSlider'
 
 const Testimonials = () => {
   const theme = useTheme();
@@ -14,7 +14,7 @@ const Testimonials = () => {
           <Typography
             variant="h1"
             sx={{
-              fontWeight: "semibold",
+              fontWeight: "600",
               fontSize: "2rem",
               textAlign: "left",
               color: theme.palette.primary.main,
@@ -28,7 +28,7 @@ const Testimonials = () => {
 
       {/* Carrusel */}
 
-    <Grid2 sx={{ marginTop: '4rem' }}>
+    <Grid2 sx={{ marginTop: { xs: '2rem', sm: '2rem', md: '4rem', lg: '4rem' } }}>
       <Slider />
     </Grid2>
 
@@ -51,11 +51,11 @@ function Item(props) {
       <Typography variant="h6">{props.item.number}</Typography>
       <Typography
         variant="subtitle1"
-        sx={{ fontWeight: "bold", margin: "0.5rem 0" }}
+        sx={{ fontWeight: "600", margin: "0.5rem 0" }}
       >
         {props.item.opinion}
       </Typography>
-      <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+      <Typography variant="body2" sx={{ color: 'text.secondary', fontWeight: '400' }}>
         {props.item.author}
       </Typography>
     </Paper>

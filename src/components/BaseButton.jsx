@@ -21,6 +21,7 @@ const BaseButton = ({ text = 'Enviar', sx = {} }) => {
             variant="contained"
             sx={{ color: theme.palette.background.default, backgroundColor: '#FF5200', borderRadius:'0px', boxShadow: 'none', textTransform: 'none', letterSpacing: '0.5px', fontSize: '1.2rem',
                 width: 'auto',
+                fontWeight: '500',
                 ...sx,
             '&:hover': {
                 backgroundColor: '#FF8226',

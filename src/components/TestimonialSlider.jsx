@@ -2,7 +2,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import { reviews } from './reviews';
 import { useTheme } from '@mui/material/styles';
-import { Paper, Grid2, Typography } from '@mui/material';
+import { Box, Grid2, Typography } from '@mui/material';
 import '../index.css'
 
 const Slider = () => {
@@ -24,6 +24,7 @@ const Slider = () => {
                 900: {
                     perPage: 1,
                     arrows: false,
+                    pagination: true
                 },
             }
           }}
@@ -34,12 +35,10 @@ const Slider = () => {
               <Grid2 container justifyContent="center" alignItems="center" spacing={1}>
                 <Grid2>
                   {/* Paper con elevation: 3, sin border-radius */}
-                  <Paper
-                    elevation={3}
-                    square
+                  <Box
                     sx={{
                       padding: 2,
-                      maxWidth: '400px'
+                      maxWidth: '480px'
                     }}
                   >
                     <Typography variant="body1" sx={{ marginBottom: 2 }}>
@@ -50,7 +49,7 @@ const Slider = () => {
                         {review.author}
                       </Typography>
                     </div>
-                  </Paper>
+                  </Box>
                 </Grid2>
               </Grid2>
             </SplideSlide>

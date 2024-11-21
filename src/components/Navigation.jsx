@@ -1,14 +1,22 @@
-import * as React from 'react'
-import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, MenuItem } from '@mui/material'
-import MenuIcon from '@mui/icons-material/Menu'
-import { useTheme } from '@mui/material/styles'
-import logoNav from '../assets/logoNav.svg'
-import logoNavMobile from '../assets/logoNavMobile.svg'
+import * as React from 'react';
+import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, MenuItem } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { useTheme } from '@mui/material/styles';
+import logoNav from '../assets/logoNav.svg';
+import logoNavMobile from '../assets/logoNavMobile.svg';
 
 const pages = ['inicio', 'beneficios', 'testimonios', 'preguntas-frecuentes', 'comencemos', 'descargar'];
 
 function Navigation() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const theme = useTheme();
+
+    // Función para poner en mayúscula solo la primera letra de cada palabra
+    const capitalizeWords = (str) => {
+        return str
+            .toLowerCase()
+            .replace(/\b\w/g, (char) => char.toUpperCase());  // Capitaliza la primera letra de cada palabra
+    };
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -17,15 +25,6 @@ function Navigation() {
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
-
-    const theme = useTheme();
-
-        // Función para poner en mayúscula solo la primera letra de cada palabra
-        const capitalizeWords = (str) => {
-            return str
-                .toLowerCase()
-                .replace(/\b\w/g, (char) => char.toUpperCase());  // Capitaliza la primera letra de cada palabra
-        };
 
     return (
         <AppBar position="fixed" sx={{ backgroundColor: theme.palette.background.default }}>
@@ -60,27 +59,32 @@ function Navigation() {
                             onClose={handleCloseNavMenu}
                             sx={{ display: { xs: 'block', md: 'none' } }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
-                                    sx={{ color: theme.palette.text.default }}
+                            {pages.map((page, index) => (
+                                <a
+                                    key={`mobile-${index}`}  // Clave única para el <a>
+                                    href={`#${page.toLowerCase()}`}
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: theme.palette.text.default,
+                                    }}
                                 >
-                                    <a
-                                        href={`${page.toLowerCase()}`}
-                                        style={{
-                                            textDecoration: 'none',
-                                            textAlign: 'left',
+                                    <MenuItem
+                                        key={`mobile-menuitem-${index}`}  // Clave única para el <MenuItem>
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ 
                                             color: theme.palette.text.default,
-                                            display: 'block',
-                                            width: '100%',
+                                            textAlign: 'left',
+                                            textTransform: 'none',
+                                            '&:hover': {
+                                                backgroundColor: theme.palette.action.hover,
+                                            },
                                         }}
                                     >
                                         <Typography variant="inherit" sx={{ color: theme.palette.text.default, textTransform: 'none' }}>
                                             {capitalizeWords(page.replace(/-/g, ' '))}
                                         </Typography>
-                                    </a>
-                                </MenuItem>
+                                    </MenuItem>
+                                </a>
                             ))}
                         </Menu>
                     </Box>
@@ -103,16 +107,17 @@ function Navigation() {
 
                     {/* Desktop Menu */}
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
-                        {pages.map((page) => (
+                        {pages.map((page, index) => (
                             <a
-                                href={`#${page === "Inicio" ? "inicio" : page.toLowerCase()}`}
+                                key={`desktop-${index}`}  // Clave única para el <a>
+                                href={`#${page.toLowerCase()}`}
                                 style={{
                                     textDecoration: 'none',
                                     color: theme.palette.text.default,
                                 }}
                             >
-                                <MenuItem
-                                    key={page}
+                                {/* <MenuItem
+                                    key={`desktop-menuitem-${index}`}  // Clave única para el <MenuItem>
                                     onClick={handleCloseNavMenu}
                                     sx={{
                                         color: theme.palette.text.default,
@@ -122,7 +127,28 @@ function Navigation() {
                                             backgroundColor: theme.palette.action.hover,
                                         },
                                     }}
+                                > */}
+
+                                <MenuItem
+                                    key={`desktop-menuitem-${index}`}  // Clave única para el <MenuItem>
+                                    onClick={handleCloseNavMenu}
+                                    sx={{
+                                        color: 'theme.palette.background.default',
+                                        textAlign: 'center',
+                                        textTransform: 'none',
+                                        '&:hover': {
+                                            backgroundColor: theme.palette.action.hover,
+                                        },
+                                        // Condicional para el botón "Descargar"
+                                        ...(page === 'descargar' && {
+                                            backgroundColor: theme.palette.secondary.main,
+                                            '&:hover': {
+                                                backgroundColor: theme.palette.secondary.light, // Hover específico para "Descargar"
+                                            },
+                                        }),
+                                    }}
                                 >
+
                                     <Typography variant="inherit" sx={{ color: theme.palette.text.default }}>
                                         {capitalizeWords(page.replace(/-/g, ' '))}
                                     </Typography>

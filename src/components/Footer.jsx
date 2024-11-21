@@ -10,7 +10,6 @@ function Footer() {
         <Box
             component="footer"
             sx={{
-                backgroundColor: theme.palette.background.default,
                 py: 2, // Padding vertical general
             }}
         >

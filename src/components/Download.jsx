@@ -19,12 +19,12 @@ const Download = () => {
             alignItems: { xs: 'left', md: 'flex-start' }
           }}>
           <Typography variant="h1" sx={{
-                    color: theme.palette.primary.main, fontSize: '2.5rem', marginBottom: '1.5rem',
+                    color: theme.palette.primary.main, fontSize: '2.5rem', marginBottom: '1.5rem', fontWeight: '600'
                 }}>
               ¿Estás listo para transformar tu vida en el edificio?
           </Typography>
           <Typography variant="h2" sx={{
-                    color: theme.palette.text.default, fontSize: '1.2rem', marginBottom: '2rem',
+                    color: theme.palette.text.default, fontSize: '1.2rem', marginBottom: '2rem', fontWeight: '400'
                 }}>
               Con EntrePisos, la convivencia deja de ser un desafío y se convierte en algo simple y organizado. ¡Sumate ahora y hacé la diferencia!          </Typography>
           <BaseButton text="Descargá la app" sx={{

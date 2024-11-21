@@ -1,19 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
-/* Eliminar márgenes y paddings de los slides */
-.splide__slide {
-    margin: 0 !important; /* Eliminar márgenes */
-    padding: 0 !important; /* Eliminar padding */
-  }
-  
-  /* Eliminar márgenes de los contenedores internos */
-  .splide__track {
-    margin: 0 !important;
-  }
-  
-  /* Asegurarse de que el contenedor principal no tenga margen */
-  .splide__list {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  
+.splide__pagination__page{
+  background-color: #FF5200 !important;
+}
+
+.splide__pagination{
+  bottom: -1.8em !important;
+}
+
+.splide__arrow{
+  background: none !important;
+}
+
+.splide__arrow svg{
+  fill: #FF5200 !important;
+}
+
+:root {
+  background-color: #FCFCFC;
+}

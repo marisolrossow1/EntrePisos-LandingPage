@@ -1,28 +1,44 @@
 import React, { useState } from 'react';
 import BaseButtonSubmit from '../components/BaseButtonSubmit';
 import BaseInput from '../components/BaseInput';
-import { Grid2 } from '@mui/material';
+import { Grid2, Select, InputLabel, FormControl, MenuItem } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 export default function Form() {
     const theme = useTheme();
-    
+
     // Estado para manejar los valores del formulario
     const [formValues, setFormValues] = useState({
         name: '',
         email: '',
         phone: '',
-        message: ''
+        message: '',
+        role: '',
     });
 
-    // Función para manejar cambios en los campos de entrada
-    const handleChange = (e) => {
-        const { id, value } = e.target;
+  // Función para manejar cambios en los campos de entrada
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+
+    // Si el campo tiene un 'id', lo usamos para actualizar el estado
+    if (id) {
         setFormValues({
             ...formValues,
-            [id]: value
+            [id]: value,  // Actualizamos el valor correspondiente al campo
         });
-    };
+    }
+};
+
+// Función para manejar el cambio del Select
+const handleSelectChange = (e) => {
+    const { value } = e.target;
+
+    // Actualizamos el estado solo para el campo 'role' en este caso
+    setFormValues({
+        ...formValues,
+        role: value,  // Solo actualizamos 'role' con el valor seleccionado
+    });
+};
 
     // Función para manejar el envío del formulario
     const handleSubmit = (e) => {
@@ -36,12 +52,13 @@ export default function Form() {
             name: '',
             email: '',
             phone: '',
-            message: ''
+            message: '',
+            role: ''
         });
     };
 
     return (
-        <form 
+        <form
             className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md space-y-4 mt-6"
             onSubmit={handleSubmit} // Añadido el manejador de submit
         >
@@ -84,6 +101,22 @@ export default function Form() {
                     />
                 </Grid2>
 
+                 {/* Rol */}
+                <Grid2 size={12}>
+                    <FormControl fullWidth required>
+                        <InputLabel id="role-label">Rol</InputLabel>
+                        <Select
+                            id="role" // Usamos el 'id' para el 'Select' para que se maneje como los otros inputs
+                            value={formValues.role}
+                            onChange={handleSelectChange} // Usamos el manejador específico para 'Select'
+                            label="Rol"
+                        >
+                            <MenuItem value="Administrador">Administrador</MenuItem>
+                            <MenuItem value="Vecino">Vecino</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid2>
+
                 {/* Mensaje */}
                 <Grid2 size={12}>
                     <BaseInput
@@ -101,7 +134,7 @@ export default function Form() {
 
             {/* Botón Enviar */}
             <div className="flex justify-center mt-4">
-                <BaseButtonSubmit 
+                <BaseButtonSubmit
                     type="submit"
                     text="Enviar"
                     sx={{
@@ -110,7 +143,7 @@ export default function Form() {
                         backgroundColor: theme.palette.primary.main,
                         '&:hover': {
                             backgroundColor: theme.palette.primary.light,
-                            color: theme.palette.background.default, 
+                            color: theme.palette.background.default,
                         },
                     }}
                 />

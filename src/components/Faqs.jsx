@@ -14,7 +14,7 @@ const Faqs = () => {
           <Typography
             variant="h1"
             sx={{
-              fontWeight: "semibold",
+              fontWeight: "600",
               fontSize: "2rem",
               textAlign: "left",
               color: theme.palette.primary.main,

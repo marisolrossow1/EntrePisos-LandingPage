@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import HeroSection from './components/HeroSection.jsx'
 import Benefits from './components/Benefits.jsx'
@@ -8,12 +7,16 @@ import Faqs from './components/Faqs.jsx'
 import ContactUs from './components/ContactUs.jsx'
 import Download from './components/Download.jsx'
 import Footer from './components/Footer.jsx'
+import GetTickets from './components/GetTickets.jsx'
+import HeroSlider from './components/HeroSlider.jsx'
 
 function App() {
 
   return (
     <>
-    <HeroSection />
+    <HeroSlider/>
+    {/* <HeroSection />
+    <GetTickets/> */}
     <Benefits />
     <Benefits2 />
     <Testimonials />

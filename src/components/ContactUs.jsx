@@ -23,7 +23,7 @@ const ContactUs = () => {
           <Typography
             variant="h1"
             sx={{
-              fontWeight: "semibold",
+              fontWeight: "600",
               fontSize: "2rem",
               textAlign: "left",
               color: theme.palette.primary.main,
@@ -39,7 +39,7 @@ const ContactUs = () => {
               textAlign: "left",
               fontSize: '1.2rem',
               fontWeight: '400',
-              marginBottom: '1.5rem'
+              marginBottom: '1.5rem',
             }}
           >
             Completá el formulario para conocer nuestra propuesta.

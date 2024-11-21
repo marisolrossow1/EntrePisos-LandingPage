@@ -25,6 +25,7 @@ export default function AccordionComponent() {
           sx={{
             typography: theme.typography,
             fontSize: '1.2rem',
+            fontWeight: '500'
           }}
         >
           Soy administrador, ¿cómo puedo empezar a usar EntrePisos en mi edificio?
@@ -34,6 +35,7 @@ export default function AccordionComponent() {
             typography: theme.typography,
             fontSize: '1rem',
             textAlign: 'left',
+            fontWeight: '400'
           }}
         >
           EntrePisos ofrece sus servicios a edificios o PHs completos, con el pago gestionado a través de las expensas. Como administrador, podés implementar la plataforma para mejorar la comunicación y administración de tu edificio. Contáctanos para obtener más información y comenzar a usar EntrePisos en tu comunidad.
